@@ -1,11 +1,13 @@
 name: GitHub Actions Project Cloud
+
 on: [push]
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     env:
       DOCKER_USER: ${{secrets.DOCKER_USER}}
-      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}
     strategy:
       matrix:
         node-version: [16.x]
@@ -23,12 +25,8 @@ jobs:
 
     # logout in case allready loged
     - run: docker logout
-    - name: Build application
-     run: docker  build --no-cache -t sysinfo-api:0.0.2 . 
+    - run: docker  build --no-cache -t sysinfo-api:0.0.2 . 
     
     - run: docker tag sysinfo-api:0.0.2 $DOCKER_USER/sysinfo-api:0.0.2
-    - name: Connect on Docker Hub
-      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-
-    - name: Push on Docker
-     run: docker push $DOCKER_USER/sysinfo-api:0.0.2
+    - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - run: docker push $DOCKER_USER/sysinfo-api:0.0.2
