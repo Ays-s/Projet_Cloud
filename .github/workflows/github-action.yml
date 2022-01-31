@@ -8,6 +8,8 @@ jobs:
     env:
       DOCKER_USER: ${{secrets.DOCKER_USER}}
       DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
     strategy:
       matrix:
         node-version: [16.x]
@@ -30,3 +32,9 @@ jobs:
     - run: docker tag sysinfo-api:0.0.2 $DOCKER_USER/sysinfo-api:0.0.2
     - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - run: docker push $DOCKER_USER/sysinfo-api:0.0.2
+
+    # Heroku section
+    - run: docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
+    - run: docker tag sysinfo-api:0.0.2 registry.heroku.com/sysinfo-api-$DOCKER_USER/web
+    - run: docker push registry.heroku.com/sysinfo-api-$DOCKER_USER/web
+    - run: heroku container:release web -a sysinfo-api-$DOCKER_USER
