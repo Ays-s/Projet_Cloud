@@ -44,4 +44,5 @@
  COPY --from=builder --chown=root:root /app/Projet_Cloud/prod_module node_modules
  COPY --from=builder --chown=root:root /app/Projet_Cloud/dist dist
 
- CMD nodejs dist/index.js
+ # Run App
+ CMD ["node", "dist/index.js"]
