@@ -41,7 +41,7 @@
  COPY --from=builder --chown=node:node /app/Projet_Cloud/dist dist
 
  # downgrade des privilèges
- # USER node
+ USER node
 
  # Run App
  CMD ["node", "dist/index.js"]
