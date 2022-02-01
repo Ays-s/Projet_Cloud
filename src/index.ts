@@ -27,11 +27,6 @@ export function getAllSysinfo() {
   ])
 }
 
-export function getUserSysinfo() {
-  return Promise.resolve(
-      si.users()
-  )
-}
 
 export function formatInfo(info):ISystemInformation {
   const formatedInfo : ISystemInformation = {
@@ -57,7 +52,7 @@ const requestListener = async (request, reponse) => {
     }
     case '/api/v1/userinfo': {
       reponse.writeHead(200, {'Content-type': 'application/json'});
-      const sysInfo = await getUserSysinfo();
+      const sysInfo = await si.users();
       reponse.write(JSON.stringify(sysInfo));
       break;
     }
