@@ -41,7 +41,7 @@
  # COPY --from=builder --chown=node:node /app/Projet_Cloud/prod_module node_modules
  # COPY --from=builder --chown=node:node /app/Projet_Cloud/dist dist
 
- COPY --from=builder --chown=node:root /app/Projet_Cloud/prod_module node_modules
+ COPY --from=builder --chown=node:node /app/Projet_Cloud/prod_module node_modules
  COPY --from=builder --chown=node:node /app/Projet_Cloud/dist dist
 
 # downgrade des privilèges
