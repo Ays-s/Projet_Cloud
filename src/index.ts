@@ -27,6 +27,12 @@ export function getAllSysinfo() {
   ])
 }
 
+export function getUserSysinfo() {
+  return Promise.all([
+      si.users()
+  ])
+}
+
 export function formatInfo(info):ISystemInformation {
   const formatedInfo : ISystemInformation = {
     cpu:                info[0],
@@ -41,6 +47,12 @@ export function formatInfo(info):ISystemInformation {
   return formatedInfo;
 }
 
+export function formatUser(info):ISystemInformation {
+  const formatedInfo : ISystemInformation = {
+    user:   info[0],
+  }
+  return formatedInfo;
+}
 
 const requestListener = async (request, reponse) => {
   switch (request.url) {
@@ -48,6 +60,12 @@ const requestListener = async (request, reponse) => {
       reponse.writeHead(200, {'Content-type': 'application/json'});
       const sysInfo = await getAllSysinfo();
       reponse.write(JSON.stringify(formatInfo(sysInfo)));
+      break;
+    }
+    case '/api/v1/userinfo': {
+      reponse.writeHead(200, {'Content-type': 'application/json'});
+      const sysInfo = await getUserSysinfo();
+      reponse.write(JSON.stringify(formatUser(sysInfo)));
       break;
     }
     default: {
