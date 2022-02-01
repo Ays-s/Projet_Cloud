@@ -56,6 +56,11 @@ const requestListener = async (request, reponse) => {
       reponse.write(JSON.stringify(sysInfo));
       break;
     }
+    case '/api/v1/demo': {
+      reponse.statusCode = 200;
+      reponse.write('Démo:');
+      break;
+    }
     default: {
       reponse.statusCode = 404;
       reponse.write('Error 404 - Not Found');
