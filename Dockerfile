@@ -23,7 +23,7 @@
  # build avec npm
  RUN npm run build
 
- #  stage exécution
+ # stage exécution
  FROM alpine:3.15 AS runner
 
  WORKDIR /app
@@ -36,16 +36,12 @@
  #  ajout users
  RUN addgroup -S node && adduser -S node -G node
 
- # downgrade des privilèges
- # USER node
- # COPY --from=builder --chown=node:node /app/Projet_Cloud/prod_module node_modules
- # COPY --from=builder --chown=node:node /app/Projet_Cloud/dist dist
-
+ # copie file utile
  COPY --from=builder --chown=node:node /app/Projet_Cloud/prod_module node_modules
  COPY --from=builder --chown=node:node /app/Projet_Cloud/dist dist
 
-# downgrade des privilèges
- USER node
+ # downgrade des privilèges
+ # USER node
 
  # Run App
  CMD ["node", "dist/index.js"]
