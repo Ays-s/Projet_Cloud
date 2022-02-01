@@ -34,8 +34,7 @@
  RUN apk add --update nodejs>=16
  
  #  ajout users
- RUN deluser --remove-home node \
-  && addgroup -S node -g 999 \
+ RUN addgroup -S node -g 999 \
   && adduser -S -G node -u 999 node
 
  # downgrade des privilèges
