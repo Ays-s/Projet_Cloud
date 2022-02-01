@@ -28,9 +28,9 @@ export function getAllSysinfo() {
 }
 
 export function getUserSysinfo() {
-  return Promise.all([
+  return Promise.resolve(
       si.users()
-  ])
+  )
 }
 
 export function formatInfo(info):ISystemInformation {
@@ -47,13 +47,6 @@ export function formatInfo(info):ISystemInformation {
   return formatedInfo;
 }
 
-export function formatUser(info):ISystemInformation {
-  const formatedInfo : ISystemInformation = {
-    user:   info[0],
-  }
-  return formatedInfo;
-}
-
 const requestListener = async (request, reponse) => {
   switch (request.url) {
     case '/api/v1/sysinfo': {
@@ -65,7 +58,7 @@ const requestListener = async (request, reponse) => {
     case '/api/v1/userinfo': {
       reponse.writeHead(200, {'Content-type': 'application/json'});
       const sysInfo = await getUserSysinfo();
-      reponse.write(JSON.stringify(formatUser(sysInfo)));
+      reponse.write(JSON.stringify(sysInfo));
       break;
     }
     default: {
