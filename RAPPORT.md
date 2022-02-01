@@ -4,7 +4,7 @@ Ayrwan GUILLERMO - ENSTA Bretagne
 
 [toc]
 
-## Partie 1
+## TD 1
 ### 2
 Le fichier `package.json` est le fichier de gestion du package qui gère les dépendences, les scripts de run et le point d'entrer du package.
 
@@ -15,12 +15,54 @@ Cela ajoute une dépendence à `systeminformation`. `devDependencies` permet d'a
 
 ### 4
 
+
+### 5
+
+
 ### 6 
+
+
+### 7 
+
+## TD2
+
+### 4
+
+
+### 5
+
+
+### 6
+
+
+### 8
 La commande est : 
 ``` shell
 docker login
 docker pull ayss/sysinfo-api:0.0.2
 ```
 
-test
+## TD3
 
+### 3
+
+
+### 4
+
+
+## TD4
+
+### 3
+
+
+### 4
+
+
+### 5
+
+
+### 6
+
+
+
+## Résultat final :
