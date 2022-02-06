@@ -16,6 +16,10 @@ Cela ajoute une dépendence à `systeminformation`. `devDependencies` permet d'a
 ### 4
 
 
+
+0.0.2 -> Total Image size : 55 MB
+
+
 ### 5
 
 
@@ -30,10 +34,16 @@ Cela ajoute une dépendence à `systeminformation`. `devDependencies` permet d'a
 
 
 ### 5
+![dive v1](./images/divev1.png)
+La taille du contener est très grande : Total Image size: 226 MB 
 
 
 ### 6
+![dive v2](./images/divev2.png)
+La taille du contener est beaucoup plus petite : Total Image size: 55 MB 
 
+Le delta est de 171MB soit une baisse de 75%.  
+Pour une application cette dimunution est très importante, sur un système 
 
 ### 8
 La commande est : 
