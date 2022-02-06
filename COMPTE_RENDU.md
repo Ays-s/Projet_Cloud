@@ -2,7 +2,10 @@
 
 Ayrwan GUILLERMO - ENSTA Bretagne
 
-[toc]
+--------
+
+Lien vers le répo : (https://github.com/Ays-s/Projet_Cloud)
+
 
 ## TD 1 : une application Node.js
 ### 2
@@ -27,10 +30,33 @@ Le flag `-m` permet de definir la mémoire alloué au docker.
 Le flag `--cpus` indique le nombre de cpu aloué à l'éxécution du docker.  
 
 ### 5
-La taille de l'image est très importante. Elle contient des utilitaires ou des parties de codes utiles uniquement pour le build. On pourrait réduire la tailll de l'image en enlevant ces utilitaires.
+![dive v1](./images/divev1.png)
+La taille du contener est très grande : Total Image size: 226 MB.  
+Elle contient des utilitaires ou des parties de codes utiles uniquement pour le build. On pourrait réduire la tailll de l'image en enlevant ces utilitaires.
 
 ### 6
+![dive v2](./images/divev2.png)
+La taille du contener est beaucoup plus petite : Total Image size: 55 MB 
 
+Le delta est de 171MB soit une baisse de 75%. 
+
+### 8
+La commande est : 
+``` shell
+docker login
+docker pull ayss/sysinfo-api:0.0.2
+```
+### 5
+![dive v1](./images/divev1.png)
+La taille du contener est très grande : Total Image size: 226 MB 
+
+
+### 6
+![dive v2](./images/divev2.png)
+La taille du contener est beaucoup plus petite : Total Image size: 55 MB 
+
+Le delta est de 171MB soit une baisse de 75%.  
+Pour une application cette dimunution est très importante, sur un système 
 
 ### 8
 La commande est : 
@@ -42,24 +68,31 @@ docker pull ayss/sysinfo-api:0.0.2
 ## TD3
 
 ### 3
-
+On test sont fonctionnement directement sir les `github actions`. On voit dans l'onglet `actions` le build de notre application et les erreurs s'il y en a.
 
 ### 4
+Il aurait été plus simple de découper la partie server du reste de l'application. Les tests auraient été plus simples à réaliser.
 
 
-## TD4
+## TD4 : déploiement sur PaaS avec Heroku 
 
 ### 3
-
+Le *Process type* est le type d'application qui va être déployé. On utilise donc `web` car on déploie un application web.
 
 ### 4
-
+Bien que l'application build, on ne peut pas acceder à son url. Le port est assigné de façon dynamique et une varriable d'environnement l'indique. Il  faut donc ce servire de cette varriable pour indiquer le port de notre application.
 
 ### 5
-
+On peut l'associer au point 7 : Associations de ports.
 
 ### 6
+grace a notre application on retouve les information de la machine he.
+C'est une machien très puissante nottament avec un processeur Intel Xeon Platinum 8259CL.
+On remarque que notre application n'est pas exécuter dans une VM car sinon seul les infos de la VM seraient visibles.
 
 
+### 7 
+Le déployement automatique est disponible à : (https://dashboard.heroku.com/apps/sysinfo-api-ayss)
 
 ## Résultat final :
+![resultat](./images/resultat_heroku.png)
